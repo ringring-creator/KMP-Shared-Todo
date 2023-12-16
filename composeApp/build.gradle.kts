@@ -25,7 +25,6 @@ kotlin {
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
-            isStatic = true
         }
     }
     
@@ -82,6 +81,8 @@ android {
     }
     dependencies {
         debugImplementation(libs.compose.ui.tooling)
+        implementation(libs.koin.android)
+        implementation(libs.koin.androidx.compose)
     }
 }
 

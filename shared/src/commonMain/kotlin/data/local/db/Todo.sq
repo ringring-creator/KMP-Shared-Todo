@@ -1,0 +1,37 @@
+import kotlin.Boolean;
+import kotlinx.datetime.LocalDate;
+
+CREATE TABLE TodoTable(
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    description TEXT NOT NULL,
+    done INTEGER AS Boolean NOT NULL,
+    deadline TEXT AS LocalDate NOT NULL
+);
+
+selectAll:
+SELECT * FROM TodoTable;
+
+selectById:
+SELECT * FROM TodoTable WHERE id = :id;
+
+insert:
+INSERT OR IGNORE INTO TodoTable(title, description, done, deadline)
+VALUES(?,?,?,?);
+
+update:
+UPDATE TodoTable
+SET title = :title,
+    description = :description,
+    done = :done,
+    deadline = :deadline
+WHERE id = :id;
+
+updateDone:
+UPDATE TodoTable
+SET done = :done
+WHERE id = :id;
+
+delete:
+DELETE FROM TodoTable
+WHERE id = :id;
