@@ -26,9 +26,9 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.kotlinx.coroutines.core)
             api(libs.kotlinx.datetime)
-            implementation(libs.sqlDelight.common)
+            api(libs.sqlDelight.common)
             api(libs.koin.core)
-            api(libs.koin.compose)
+            implementation(libs.koin.compose)
             api(compose.runtime)
             api(compose.foundation)
             api(compose.material)
@@ -36,14 +36,18 @@ kotlin {
             @OptIn(ExperimentalComposeLibrary::class)
             api(compose.components.resources)
             api(compose.materialIconsExtended)
-            implementation(libs.voyager.navigator)
-            implementation(libs.voyager.kodein)
+            api(libs.voyager.navigator)
+            api(libs.voyager.kodein)
+            implementation(libs.stately.common)
         }
         androidMain.dependencies {
             implementation(libs.sqlDelight.android)
         }
         iosMain.dependencies {
-            implementation(libs.sqlDelight.native)
+            api(libs.sqlDelight.ios)
+        }
+        jvmMain.dependencies {
+            implementation(libs.sqlDelight.sqlite)
         }
     }
 }
