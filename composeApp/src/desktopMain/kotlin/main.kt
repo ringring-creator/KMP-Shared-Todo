@@ -4,6 +4,7 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import di.initKoin
 import org.koin.core.Koin
+import ui.App
 
 lateinit var koin: Koin
 

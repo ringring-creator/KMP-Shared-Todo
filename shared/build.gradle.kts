@@ -1,3 +1,5 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.jetbrainsCompose)
@@ -30,9 +32,12 @@ kotlin {
             api(compose.runtime)
             api(compose.foundation)
             api(compose.material)
-            @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+            api(compose.material3)
+            @OptIn(ExperimentalComposeLibrary::class)
             api(compose.components.resources)
             api(compose.materialIconsExtended)
+            implementation(libs.voyager.navigator)
+            implementation(libs.voyager.kodein)
         }
         androidMain.dependencies {
             implementation(libs.sqlDelight.android)

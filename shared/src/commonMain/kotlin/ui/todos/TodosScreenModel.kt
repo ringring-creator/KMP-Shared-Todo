@@ -1,5 +1,7 @@
 package ui.todos
 
+import cafe.adriel.voyager.core.model.ScreenModel
+import cafe.adriel.voyager.core.model.screenModelScope
 import data.Todo
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
@@ -12,22 +14,21 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 
-class TodosViewModel(
+class TodosScreenModel(
     private val todoRepository: data.TodoRepository,
-) : KoinComponent {
+) : ScreenModel, KoinComponent {
     private val _todosUiState = MutableStateFlow(
         TodosUiState(todos = emptyList())
     )
     val todosUiState = _todosUiState.asStateFlow()
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
-    private val viewModelScope: CoroutineScope = CoroutineScope(Dispatchers.Main)
 
     init {
         refresh()
     }
 
     fun refresh() {
-        viewModelScope.launch {
+        screenModelScope.launch {
             withContext(dispatcher) {
                 updateTodoUiState()
             }
@@ -35,7 +36,7 @@ class TodosViewModel(
     }
 
     fun setDone(id: Long, done: Boolean) {
-        viewModelScope.launch {
+        screenModelScope.launch {
             withContext(dispatcher) {
                 todoRepository.updateDone(id, done)
                 updateTodoUiState()
