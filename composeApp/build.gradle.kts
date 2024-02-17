@@ -80,10 +80,6 @@ android {
     }
 }
 
-dependencies {
-    implementation(libs.androidx.material3.android)
-}
-
 compose.desktop {
     application {
         mainClass = "MainKt"
