@@ -48,6 +48,10 @@ kotlin {
         }
         jvmMain.dependencies {
             implementation(libs.sqlDelight.sqlite)
+            implementation(libs.voyager.navigator.desktop)
+            api(libs.voyager.kodein.desktop)
+            implementation(libs.voyager.screenmodel.desktop)
+            implementation(libs.kotlinx.coroutines.swing)
         }
     }
 }

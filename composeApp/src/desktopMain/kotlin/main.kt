@@ -11,7 +11,7 @@ lateinit var koin: Koin
 fun main() {
     koin = initKoin().koin
     application {
-        Window(onCloseRequest = ::exitApplication, title = "KMP-SharedTodo") {
+        Window(onCloseRequest = ::exitApplication, title = "KMP-Shared-Todo") {
             App()
         }
     }

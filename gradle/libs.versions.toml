@@ -22,12 +22,13 @@ kotlinxDatetime = "0.4.1"
 kotlinx-coroutines = "1.7.3"
 places = "3.3.0"
 material3 = "1.1.2"
-koinCore = "3.5.0"
-koinCompose = "1.0.3"
-koinAndroid = "3.5.0"
-koinAndroidxCompose = "3.4.5"
-statelyCommon = "2.0.0"
+koin-core = "3.5.0"
+koin-compose = "1.0.3"
+koin-android = "3.5.0"
+koin-androidx-compose = "3.4.5"
+stately-common = "2.0.0"
 voyager = "1.0.0"
+material-3-android = "1.2.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -57,15 +58,23 @@ sqlDelight-sqlite = { module = "app.cash.sqldelight:sqlite-driver", version.ref 
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 places = { group = "com.google.android.libraries.places", name = "places", version.ref = "places" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinCore" }
-koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinCompose" }
-stately-common = { module = "co.touchlab:stately-common", version.ref = "statelyCommon" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin-core" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin-compose" }
+stately-common = { module = "co.touchlab:stately-common", version.ref = "stately-common" }
 voyager-kodein = { module = "cafe.adriel.voyager:voyager-kodein", version.ref = "voyager" }
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 
 #Android Lib Dependencies
-koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
-koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinAndroidxCompose" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin-android" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin-androidx-compose" }
+androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material-3-android" }
+
+# Desktop Dependencies
+kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+voyager-navigator-desktop = { module = "cafe.adriel.voyager:voyager-navigator-desktop", version.ref = "voyager" }
+voyager-screenmodel-desktop = { module = "cafe.adriel.voyager:voyager-screenmodel-desktop", version.ref = "voyager" }
+voyager-kodein-desktop = { module = "cafe.adriel.voyager:voyager-kodein-desktop", version.ref = "voyager" }
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
