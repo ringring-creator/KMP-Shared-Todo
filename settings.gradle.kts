@@ -1,4 +1,4 @@
-rootProject.name = "KMP-SharedTodo"
+rootProject.name = "KMP-Shared-Todo"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
