@@ -1,11 +1,12 @@
 package com.ring.ring.kmpsharedtodo
 
-import Greeting
 import SERVER_PORT
+import di.initKoin
+import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import io.ktor.server.response.*
+import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.routing.*
 
 fun main() {
@@ -14,9 +15,19 @@ fun main() {
 }
 
 fun Application.module() {
+    initKoin {}
+    configureSerialization()
+    configureRouting()
+}
+
+fun Application.configureRouting() {
     routing {
-        get("/") {
-            call.respondText("Ktor: ${Greeting().greet()}")
-        }
+        customerRouting()
+    }
+}
+
+fun Application.configureSerialization() {
+    install(ContentNegotiation) {
+        json()
     }
 }
