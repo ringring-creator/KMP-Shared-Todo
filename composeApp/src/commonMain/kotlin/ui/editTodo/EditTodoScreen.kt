@@ -17,7 +17,7 @@ import androidx.compose.material.TextButton
 import androidx.compose.material.TextField
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Delete
@@ -120,7 +120,7 @@ class EditTodoScreen(val id: Long?) : Screen, KoinComponent {
                     title = { Text("Add / Edit Todo") },
                     navigationIcon = {
                         Icon(
-                            Icons.Filled.ArrowBack,
+                            Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = null,
                             modifier = Modifier.clickable { stateUpdater.onBack() }
                         )
@@ -234,7 +234,6 @@ class EditTodoScreen(val id: Long?) : Screen, KoinComponent {
                 confirmButton = {
                     TextButton(
                         onClick = {
-                            datePickerState.setSelection(datePickerState.selectedDateMillis)
                             datePickerState.selectedDateMillis?.let { setDate(it) }
                             dismiss()
                         }
