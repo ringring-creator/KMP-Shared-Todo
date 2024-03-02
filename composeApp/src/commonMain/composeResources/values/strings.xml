@@ -1,0 +1,4 @@
+<resources>
+    <string name="todos_screen_title">Todo List</string>
+    <string name="edit_screen_title">Add / Edit Todo</string>
+</resources>

@@ -36,7 +36,11 @@ import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import kmp_shared_todo.composeapp.generated.resources.Res
+import kmp_shared_todo.composeapp.generated.resources.edit_screen_title
 import kotlinx.datetime.Clock
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.stringResource
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
 import org.koin.core.parameter.parametersOf
@@ -109,6 +113,7 @@ class EditTodoScreen(val id: Long?) : Screen, KoinComponent {
         )
     }
 
+    @OptIn(ExperimentalResourceApi::class)
     @Composable
     fun EditTodoScreen(
         editTodoUiState: EditTodoUiState,
@@ -117,7 +122,7 @@ class EditTodoScreen(val id: Long?) : Screen, KoinComponent {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text("Add / Edit Todo") },
+                    title = { Text(stringResource(Res.string.edit_screen_title)) },
                     navigationIcon = {
                         Icon(
                             Icons.AutoMirrored.Filled.ArrowBack,

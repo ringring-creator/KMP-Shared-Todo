@@ -16,6 +16,7 @@ import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Notifications
@@ -30,6 +31,10 @@ import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import kmp_shared_todo.composeapp.generated.resources.Res
+import kmp_shared_todo.composeapp.generated.resources.todos_screen_title
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.stringResource
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
 import ui.editTodo.EditTodoScreen
@@ -68,6 +73,7 @@ class TodosScreen : Screen, KoinComponent {
         }
     }
 
+    @OptIn(ExperimentalResourceApi::class)
     @Composable
     fun TodosScreen(
         uiState: TodosUiState,
@@ -75,7 +81,11 @@ class TodosScreen : Screen, KoinComponent {
         onNavigateToEditTodo: (Long?) -> Unit,
     ) {
         Scaffold(
-            topBar = { Text("test") },
+            topBar = {
+                TopAppBar(
+                    title = { Text(stringResource(Res.string.todos_screen_title)) }
+                )
+            },
             floatingActionButton = {
                 FloatingActionButton(onClick = { onNavigateToEditTodo(null) }) {
                     Icon(
