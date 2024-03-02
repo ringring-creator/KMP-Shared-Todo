@@ -1,9 +1,11 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.sqlDelight)
 }
 
 kotlin {
@@ -14,9 +16,9 @@ kotlin {
             }
         }
     }
-    
+
     jvm("desktop")
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -27,19 +29,42 @@ kotlin {
             linkerOpts.add("-lsqlite3")
         }
     }
-    
+
     sourceSets {
         val desktopMain by getting
-        
+
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.sqlDelight.android)
+        }
+        iosMain.dependencies {
+            implementation(libs.sqlDelight.ios)
         }
         commonMain.dependencies {
-            implementation(projects.shared)
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.datetime)
+            implementation(libs.sqlDelight.common)
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(compose.runtime)
+            implementation(compose.foundation)
+            implementation(compose.material)
+            implementation(compose.material3)
+            @OptIn(ExperimentalComposeLibrary::class)
+            implementation(compose.components.resources)
+            implementation(compose.materialIconsExtended)
+            implementation(libs.voyager.navigator)
+            implementation(libs.voyager.kodein)
+            implementation(libs.stately.common)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
+            implementation(libs.sqlDelight.sqlite)
+            implementation(libs.voyager.navigator.desktop)
+            implementation(libs.voyager.kodein.desktop)
+            implementation(libs.voyager.screenmodel.desktop)
+            implementation(libs.kotlinx.coroutines.swing)
         }
     }
 }
@@ -88,6 +113,15 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "com.ring.ring.kmpsharedtodo"
             packageVersion = "1.0.0"
+        }
+    }
+}
+
+sqldelight {
+    databases {
+        create("LocalDb") {
+            packageName.set("data.local.db")
+            srcDirs("src/commonMain/kotlin")
         }
     }
 }
