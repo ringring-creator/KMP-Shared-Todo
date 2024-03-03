@@ -56,6 +56,7 @@ kotlin {
             implementation(libs.voyager.kodein)
             implementation(libs.stately.common)
             implementation(libs.napier)
+            implementation(libs.multiplatformSettings.common)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

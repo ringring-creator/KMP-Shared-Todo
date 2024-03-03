@@ -27,6 +27,7 @@ koin-androidx-compose = "3.4.5"
 stately-common = "2.0.0"
 voyager = "1.0.0"
 napier = "2.6.1"
+multiplatformSettings = "1.1.1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -57,6 +58,7 @@ stately-common = { module = "co.touchlab:stately-common", version.ref = "stately
 voyager-kodein = { module = "cafe.adriel.voyager:voyager-kodein", version.ref = "voyager" }
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 napier = { module = "io.github.aakira:napier", version.ref = "napier" }
+multiplatformSettings-common = { module = "com.russhwolf:multiplatform-settings-no-arg", version.ref = "multiplatformSettings" }
 
 #Android Lib Dependencies
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin-android" }

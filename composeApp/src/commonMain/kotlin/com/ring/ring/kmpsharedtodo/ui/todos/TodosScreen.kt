@@ -14,6 +14,7 @@ import androidx.compose.material.Card
 import androidx.compose.material.Checkbox
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
+import androidx.compose.material.IconToggleButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -26,15 +27,19 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.ring.ring.kmpsharedtodo.ui.AppModel
 import com.ring.ring.kmpsharedtodo.ui.editTodo.EditTodoScreen
-import kmp_shared_todo.composeapp.generated.resources.Res
-import kmp_shared_todo.composeapp.generated.resources.todos_screen_title
+import kmp_shared_ui_todo.composeapp.generated.resources.Res
+import kmp_shared_ui_todo.composeapp.generated.resources.baseline_dark_mode_24
+import kmp_shared_ui_todo.composeapp.generated.resources.todos_screen_title
 import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
@@ -54,16 +59,19 @@ class TodosScreen : Screen, KoinComponent {
     @Composable
     override fun Content() {
         val screenModel = rememberScreenModel<TodosScreenModel>(factory = { get() })
+        val appModel = rememberScreenModel<AppModel>(factory = { get() })
 
         val todosUiState by screenModel.todosUiState.collectAsState()
+        val isDarkMode by appModel.isDarkMode.collectAsState()
+
         val navigator = LocalNavigator.currentOrThrow
 
         TodosScreen(
             uiState = todosUiState,
+            isDarkMode = isDarkMode,
             setDone = screenModel::setDone,
-            onNavigateToEditTodo = { id ->
-                navigator.push(EditTodoScreen(id = id))
-            }
+            setDarkMode = appModel::setDarkMode,
+            onNavigateToEditTodo = { id -> navigator.push(EditTodoScreen(id = id)) }
         )
 
         DisposableEffect(Unit) {
@@ -77,13 +85,24 @@ class TodosScreen : Screen, KoinComponent {
     @Composable
     fun TodosScreen(
         uiState: TodosUiState,
+        isDarkMode: Boolean,
         setDone: (id: Long, done: Boolean) -> Unit,
+        setDarkMode: (done: Boolean) -> Unit,
         onNavigateToEditTodo: (Long?) -> Unit,
     ) {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(stringResource(Res.string.todos_screen_title)) }
+                    title = { Text(stringResource(Res.string.todos_screen_title)) },
+                    actions = {
+                        IconToggleButton(checked = isDarkMode, onCheckedChange = setDarkMode) {
+                            Icon(
+                                painter = painterResource(Res.drawable.baseline_dark_mode_24),
+                                contentDescription = null,
+                                tint = if (isDarkMode) Color.Gray else Color.White,
+                            )
+                        }
+                    }
                 )
             },
             floatingActionButton = {

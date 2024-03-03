@@ -36,8 +36,8 @@ import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import kmp_shared_todo.composeapp.generated.resources.Res
-import kmp_shared_todo.composeapp.generated.resources.edit_screen_title
+import kmp_shared_ui_todo.composeapp.generated.resources.Res
+import kmp_shared_ui_todo.composeapp.generated.resources.edit_screen_title
 import kotlinx.datetime.Clock
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
