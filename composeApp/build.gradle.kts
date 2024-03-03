@@ -1,5 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
@@ -16,8 +14,6 @@ kotlin {
         }
     }
 
-    jvm("desktop")
-
     listOf(
         iosX64(),
         iosArm64(),
@@ -30,8 +26,6 @@ kotlin {
     }
 
     sourceSets {
-        val desktopMain by getting
-
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
@@ -57,14 +51,6 @@ kotlin {
             implementation(libs.stately.common)
             implementation(libs.napier)
             implementation(libs.multiplatformSettings.common)
-        }
-        desktopMain.dependencies {
-            implementation(compose.desktop.currentOs)
-            implementation(libs.sqlDelight.sqlite)
-            implementation(libs.voyager.navigator.desktop)
-            implementation(libs.voyager.kodein.desktop)
-            implementation(libs.voyager.screenmodel.desktop)
-            implementation(libs.kotlinx.coroutines.swing)
         }
     }
 }
@@ -111,18 +97,6 @@ android {
     }
     buildFeatures {
         buildConfig = true
-    }
-}
-
-compose.desktop {
-    application {
-        mainClass = "com.ring.ring.kmpsharedtodo.MainKt"
-
-        nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.ring.ring.kmpsharedtodo"
-            packageVersion = "1.0.0"
-        }
     }
 }
 
