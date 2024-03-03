@@ -1,9 +1,9 @@
-package ui.editTodo
+package com.ring.ring.kmpsharedtodo.ui.editTodo
 
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
-import data.Todo
-import data.TodoRepository
+import com.ring.ring.kmpsharedtodo.data.Todo
+import com.ring.ring.kmpsharedtodo.data.TodoRepository
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

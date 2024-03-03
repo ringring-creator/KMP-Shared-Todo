@@ -1,6 +1,6 @@
-package data.local.db
+package com.ring.ring.kmpsharedtodo.data.local.db
 
-import data.Todo
+import com.ring.ring.kmpsharedtodo.data.Todo
 
 class TodoDataSource(private val queries: TodoQueries) {
     fun list(): List<Todo> = queries.selectAll().executeAsList().map {

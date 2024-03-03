@@ -1,10 +1,12 @@
+package com.ring.ring.kmpsharedtodo
+
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import di.initKoin
+import com.ring.ring.kmpsharedtodo.di.initKoin
+import com.ring.ring.kmpsharedtodo.ui.App
 import org.koin.core.Koin
-import ui.App
 
 lateinit var koin: Koin
 

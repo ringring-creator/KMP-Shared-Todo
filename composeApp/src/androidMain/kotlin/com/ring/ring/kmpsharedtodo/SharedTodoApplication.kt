@@ -1,7 +1,7 @@
 package com.ring.ring.kmpsharedtodo
 
 import android.app.Application
-import di.initKoin
+import com.ring.ring.kmpsharedtodo.di.initKoin
 import org.koin.android.ext.koin.androidContext
 
 class SharedTodoApplication : Application() {

@@ -1,10 +1,10 @@
-package data
+package com.ring.ring.kmpsharedtodo.data
 
 import app.cash.sqldelight.ColumnAdapter
 import app.cash.sqldelight.db.SqlDriver
-import data.local.db.LocalDb
-import data.local.db.TodoDataSource
-import data.local.db.TodoTable
+import com.ring.ring.kmpsharedtodo.data.local.db.LocalDb
+import com.ring.ring.kmpsharedtodo.data.local.db.TodoDataSource
+import com.ring.ring.kmpsharedtodo.data.local.db.TodoTable
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO

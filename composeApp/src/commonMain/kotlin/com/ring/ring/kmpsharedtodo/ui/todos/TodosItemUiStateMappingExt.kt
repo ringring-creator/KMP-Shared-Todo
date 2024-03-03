@@ -1,6 +1,6 @@
-package ui.todos
+package com.ring.ring.kmpsharedtodo.ui.todos
 
-import data.Todo
+import com.ring.ring.kmpsharedtodo.data.Todo
 
 fun Todo.toTodosItemUiState() = id?.let {
     TodosItemUiState(

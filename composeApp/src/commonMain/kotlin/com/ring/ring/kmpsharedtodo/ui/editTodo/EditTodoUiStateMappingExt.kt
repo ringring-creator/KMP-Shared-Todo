@@ -1,4 +1,4 @@
-package ui.editTodo
+package com.ring.ring.kmpsharedtodo.ui.editTodo
 
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate

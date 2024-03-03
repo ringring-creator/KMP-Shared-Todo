@@ -1,4 +1,4 @@
-package di
+package com.ring.ring.kmpsharedtodo.di
 
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin

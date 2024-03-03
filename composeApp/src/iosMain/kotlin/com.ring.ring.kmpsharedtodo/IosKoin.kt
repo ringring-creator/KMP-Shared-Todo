@@ -1,8 +1,10 @@
-import di.initKoin
+package com.ring.ring.kmpsharedtodo
+
+import com.ring.ring.kmpsharedtodo.di.initKoin
+import com.ring.ring.kmpsharedtodo.ui.editTodo.EditTodoScreenModel
+import com.ring.ring.kmpsharedtodo.ui.todos.TodosScreenModel
 import org.koin.core.Koin
 import org.koin.core.KoinApplication
-import ui.editTodo.EditTodoScreenModel
-import ui.todos.TodosScreenModel
 
 fun KoinApplication.Companion.start(logEnabled: Boolean): KoinApplication = initKoin(
     appDeclaration = { },

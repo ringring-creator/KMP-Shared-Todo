@@ -115,7 +115,7 @@ android {
 
 compose.desktop {
     application {
-        mainClass = "MainKt"
+        mainClass = "com.ring.ring.kmpsharedtodo.MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
@@ -128,7 +128,7 @@ compose.desktop {
 sqldelight {
     databases {
         create("LocalDb") {
-            packageName.set("data.local.db")
+            packageName.set("com.ring.ring.kmpsharedtodo.data.local.db")
             srcDirs("src/commonMain/kotlin")
         }
     }

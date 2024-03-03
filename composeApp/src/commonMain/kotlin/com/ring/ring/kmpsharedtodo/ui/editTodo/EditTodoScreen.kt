@@ -1,4 +1,4 @@
-package ui.editTodo
+package com.ring.ring.kmpsharedtodo.ui.editTodo
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box

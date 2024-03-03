@@ -1,4 +1,4 @@
-package ui.todos
+package com.ring.ring.kmpsharedtodo.ui.todos
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -31,13 +31,13 @@ import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.ring.ring.kmpsharedtodo.ui.editTodo.EditTodoScreen
 import kmp_shared_todo.composeapp.generated.resources.Res
 import kmp_shared_todo.composeapp.generated.resources.todos_screen_title
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
-import ui.editTodo.EditTodoScreen
 
 data class TodosUiState(
     val todos: List<TodosItemUiState>,

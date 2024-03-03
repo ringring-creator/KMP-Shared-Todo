@@ -1,8 +1,9 @@
-package ui.todos
+package com.ring.ring.kmpsharedtodo.ui.todos
 
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
-import data.Todo
+import com.ring.ring.kmpsharedtodo.data.Todo
+import com.ring.ring.kmpsharedtodo.data.TodoRepository
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +15,7 @@ import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 
 class TodosScreenModel(
-    private val todoRepository: data.TodoRepository,
+    private val todoRepository: TodoRepository,
 ) : ScreenModel, KoinComponent {
     private val _todosUiState = MutableStateFlow(
         TodosUiState(todos = emptyList())
