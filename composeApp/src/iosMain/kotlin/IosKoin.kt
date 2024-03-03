@@ -4,7 +4,10 @@ import org.koin.core.KoinApplication
 import ui.editTodo.EditTodoScreenModel
 import ui.todos.TodosScreenModel
 
-fun KoinApplication.Companion.start(): KoinApplication = initKoin { }
+fun KoinApplication.Companion.start(logEnabled: Boolean): KoinApplication = initKoin(
+    appDeclaration = { },
+    logEnabled = logEnabled
+)
 
 val Koin.todosScreenModel: TodosScreenModel
     get() = get()

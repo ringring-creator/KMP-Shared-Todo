@@ -3,6 +3,7 @@ package ui.todos
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import data.Todo
+import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -26,6 +27,7 @@ class TodosScreenModel(
     }
 
     fun refresh() {
+        Napier.d(tag = "TodosScreenModel", message = "refresh")
         screenModelScope.launch {
             withContext(dispatcher) {
                 updateTodoUiState()
@@ -34,6 +36,7 @@ class TodosScreenModel(
     }
 
     fun setDone(id: Long, done: Boolean) {
+        Napier.d(tag = "TodosScreenModel", message = "setDone, id: $id, done: $done")
         screenModelScope.launch {
             withContext(dispatcher) {
                 todoRepository.updateDone(id, done)

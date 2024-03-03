@@ -12,4 +12,4 @@ fun commonModule() = module {
     factory { EditTodoScreenModel(todoRepository = get(), id = it[0]) }
 }
 
-expect fun platformModule(): Module
+expect fun platformModule(logEnabled: Boolean): Module

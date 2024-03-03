@@ -4,6 +4,7 @@ import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import data.Todo
 import data.TodoRepository
+import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -49,30 +50,37 @@ class EditTodoScreenModel(
     }
 
     override fun setTitle(title: String) {
+        Napier.d(tag = "EditTodoScreenModel", message = "setTitle")
         _title.value = title
     }
 
     override fun setDescription(description: String) {
+        Napier.d(tag = "EditTodoScreenModel", message = "setDescription")
         _description.value = description
     }
 
     override fun setDone(done: Boolean) {
+        Napier.d(tag = "EditTodoScreenModel", message = "setDone")
         _done.value = done
     }
 
     override fun setDeadline(deadline: Long) {
+        Napier.d(tag = "EditTodoScreenModel", message = "setDeadline")
         _deadline.value = EditTodoUiState.Deadline(milliseconds = deadline)
     }
 
     override fun showDatePicker() {
+        Napier.d(tag = "EditTodoScreenModel", message = "showDatePicker")
         _showDatePicker.value = true
     }
 
     override fun dismissDatePicker() {
+        Napier.d(tag = "EditTodoScreenModel", message = "dismissDatePicker")
         _showDatePicker.value = false
     }
 
     override fun save() {
+        Napier.d(tag = "EditTodoScreenModel", message = "save")
         screenModelScope.launch {
             withContext(dispatcher) {
                 todoRepository.save(
@@ -90,6 +98,7 @@ class EditTodoScreenModel(
     }
 
     override fun delete() {
+        Napier.d(tag = "EditTodoScreenModel", message = "delete")
         screenModelScope.launch {
             withContext(dispatcher) {
                 id?.let { todoRepository.delete(id = it) }
@@ -99,6 +108,7 @@ class EditTodoScreenModel(
     }
 
     override fun onBack() {
+        Napier.d(tag = "EditTodoScreenModel", message = "onBack")
         _backEvent.trySend(Unit)
     }
 }

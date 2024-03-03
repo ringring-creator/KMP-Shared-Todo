@@ -55,6 +55,7 @@ kotlin {
             implementation(libs.voyager.navigator)
             implementation(libs.voyager.kodein)
             implementation(libs.stately.common)
+            implementation(libs.napier)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -89,7 +90,13 @@ android {
     }
     buildTypes {
         getByName("release") {
+            isMinifyEnabled = true
+        }
+        getByName("debug") {
+            isDebuggable = true
             isMinifyEnabled = false
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-DEBUG"
         }
     }
     compileOptions {
@@ -100,6 +107,9 @@ android {
         debugImplementation(libs.compose.ui.tooling)
         implementation(libs.koin.android)
         implementation(libs.koin.androidx.compose)
+    }
+    buildFeatures {
+        buildConfig = true
     }
 }
 

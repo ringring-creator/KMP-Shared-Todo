@@ -5,6 +5,7 @@ import app.cash.sqldelight.db.SqlDriver
 import data.local.db.LocalDb
 import data.local.db.TodoDataSource
 import data.local.db.TodoTable
+import io.github.aakira.napier.Napier
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
@@ -43,14 +44,17 @@ class TodoRepository(
     }
 
     suspend fun list(): List<Todo> = withContext(Dispatchers.IO) {
+        Napier.d(tag = "TodoRepository", message = "list")
         todoDataSource.list()
     }
 
     suspend fun get(id: Long): Todo = withContext(Dispatchers.IO) {
+        Napier.d(tag = "TodoRepository", message = "get, id: $id")
         todoDataSource.get(id = id)
     }
 
     suspend fun save(todo: Todo) = withContext(Dispatchers.IO) {
+        Napier.d(tag = "TodoRepository", message = "save, todo: $todo")
         try {
             todoDataSource.upsert(todo)
         } catch (e: Exception) {
@@ -59,10 +63,12 @@ class TodoRepository(
     }
 
     suspend fun updateDone(id: Long, done: Boolean) = withContext(Dispatchers.IO) {
+        Napier.d(tag = "TodoRepository", message = "updateDone, id: $id, done: $done")
         todoDataSource.updateDone(id, done)
     }
 
     suspend fun delete(id: Long) = withContext(Dispatchers.IO) {
+        Napier.d(tag = "TodoRepository", message = "delete, id: $id")
         todoDataSource.delete(id = id)
     }
 }

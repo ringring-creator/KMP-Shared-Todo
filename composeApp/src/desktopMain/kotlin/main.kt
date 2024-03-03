@@ -9,7 +9,7 @@ import ui.App
 lateinit var koin: Koin
 
 fun main() {
-    koin = initKoin().koin
+    koin = initKoin(logEnabled = true).koin
     application {
         Window(onCloseRequest = ::exitApplication, title = "KMP-Shared-Todo") {
             App()
