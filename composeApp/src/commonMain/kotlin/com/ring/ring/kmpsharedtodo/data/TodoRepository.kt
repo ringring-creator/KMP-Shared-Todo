@@ -1,10 +1,7 @@
 package com.ring.ring.kmpsharedtodo.data
 
 import app.cash.sqldelight.ColumnAdapter
-import app.cash.sqldelight.db.SqlDriver
-import com.ring.ring.kmpsharedtodo.data.local.db.LocalDb
 import com.ring.ring.kmpsharedtodo.data.local.db.TodoDataSource
-import com.ring.ring.kmpsharedtodo.data.local.db.TodoTable
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -32,17 +29,8 @@ class DeadlineAdapter : ColumnAdapter<LocalDate, String> {
 }
 
 class TodoRepository(
-    private val sqlDriver: SqlDriver,
+    private val todoDataSource: TodoDataSource,
 ) {
-    private val todoDataSource by lazy {
-        TodoDataSource(
-            LocalDb(
-                driver = sqlDriver,
-                TodoTableAdapter = TodoTable.Adapter(DeadlineAdapter()),
-            ).todoQueries
-        )
-    }
-
     suspend fun list(): List<Todo> = withContext(Dispatchers.IO) {
         Napier.d(tag = "TodoRepository", message = "list")
         todoDataSource.list()
