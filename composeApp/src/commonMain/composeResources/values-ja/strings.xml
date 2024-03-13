@@ -1,0 +1,4 @@
+<resources>
+    <string name="todos_screen_title">Todoリスト</string>
+    <string name="edit_screen_title">Todoの追加 / 編集</string>
+</resources>
